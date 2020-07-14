@@ -34,7 +34,18 @@ class Building
       end
       rented
     end
+  end
 
+  def renter_with_highest_rent
+    rented_units = @units.reduce([]) do |renter, unit|
+      if unit.renter != nil
+      renter << unit
+      end
+    renter
+    end
+    rented_units.max_by do |unit|
+      unit.monthly_rent
+    end.renter
   end
 
 
