@@ -1,7 +1,7 @@
 class Renter
  #attr_reader
-  #def initialize(*arg)
+  def initialize(name)
 
-  #end
+  end
 
 end
