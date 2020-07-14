@@ -174,4 +174,82 @@ class BuildingTest < Minitest::Test
     assert_equal expected, building.units_by_number_of_bedrooms
 
   end
+
+  def test_it_can_calculate_annual_breakdown
+    building = Building.new
+    # => #<Building:0x00007fb333c0cec8...>
+
+    unit1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
+    # => #<Apartment:0x00007fb333bcd840...>
+
+    unit2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 2, bedrooms: 2})
+    # => #<Apartment:0x00007fb333a55008...>
+
+    unit3 = Apartment.new({number: "C3", monthly_rent: 1150, bathrooms: 2, bedrooms: 2})
+    # => #<Apartment:0x00007fa83bc777d0...>
+
+    renter1 = Renter.new("Spencer")
+    # => #<Renter:0x00007fb333d0d7f0...>
+
+    building.add_unit(unit1)
+
+    building.add_unit(unit2)
+
+    building.add_unit(unit3)
+
+    unit2.add_renter(renter1)
+    expected1 = {"Spencer" => 11988}
+    assert_equal expected1, building.annual_breakdown
+    # =>
+
+    renter2 = Renter.new("Jessie")
+    # => #<Renter:0x00007fb333af5a80...>
+
+    unit1.add_renter(renter2)
+
+    expected2 = {"Jessie" => 14400, "Spencer" => 11988}
+    assert_equal expected2, building.annual_breakdown
+
+
+    #=>
+
+  end
+
+  def test_it_can_organize_rooms_by_renter
+    skip
+    building = Building.new
+    # => #<Building:0x00007fb333c0cec8...>
+
+    unit1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
+    # => #<Apartment:0x00007fb333bcd840...>
+
+    unit2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 2, bedrooms: 2})
+    # => #<Apartment:0x00007fb333a55008...>
+
+    unit3 = Apartment.new({number: "C3", monthly_rent: 1150, bathrooms: 2, bedrooms: 2})
+    # => #<Apartment:0x00007fa83bc777d0...>
+
+    renter1 = Renter.new("Spencer")
+    # => #<Renter:0x00007fb333d0d7f0...>
+
+    building.add_unit(unit1)
+
+    building.add_unit(unit2)
+
+    building.add_unit(unit3)
+
+    unit2.add_renter(renter1)
+    expected1 = {"Spencer" => 11988}
+    # =>
+
+    renter2 = Renter.new("Jessie")
+    # => #<Renter:0x00007fb333af5a80...>
+
+    unit1.add_renter(renter2)
+
+    expected1 = {renter2 => {bathrooms: 1, bedrooms: 1}, renter1 => {bathrooms: 2, bedrooms: 2}}
+
+    assert_equal expected1, building.rooms_by_renter
+
+  end
 end
