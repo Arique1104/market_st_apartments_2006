@@ -11,8 +11,6 @@ class Apartment
     @bathrooms = unit_specs[:bathrooms]
     @bedrooms = unit_specs[:bedrooms]
     @renter = nil
-
-
   end
 
 end
