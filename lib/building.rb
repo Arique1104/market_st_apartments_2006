@@ -4,4 +4,9 @@ class Building
     @units = []
   end
 
+  def add_unit(unit)
+    @units << unit
+
+  end
+
 end
