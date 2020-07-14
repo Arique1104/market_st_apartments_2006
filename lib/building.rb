@@ -9,8 +9,13 @@ class Building
   end
 
   def renters
-    @units.map do |unit|
-      unit.renter.name
+    @units.reduce([]) do |renters, unit|
+      if unit.renter == nil
+        "Unit Not Rented"
+      else
+        renters << unit.renter.name
+      end
+      renters
     end
   end
 
