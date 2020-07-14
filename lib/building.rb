@@ -27,6 +27,16 @@ class Building
     total_rent.to_f / total_units
   end
 
+  def rented_units
+    @units.reduce([]) do |rented, unit|
+      if unit.renter != nil
+        rented << unit
+      end
+      rented
+    end
+
+  end
+
 
 
 end

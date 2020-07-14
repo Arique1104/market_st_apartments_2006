@@ -95,8 +95,7 @@ class BuildingTest < Minitest::Test
 
     unit2.add_renter(renter1)
 
-    assert_equal unit2, building.rented_units
-    # => [#<Apartment:0x00007fa83bc777d0...>]
+    assert_equal [unit2], building.rented_units
 
 
   end
