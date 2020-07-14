@@ -216,7 +216,7 @@ class BuildingTest < Minitest::Test
   end
 
   def test_it_can_organize_rooms_by_renter
-    skip
+    # skip
     building = Building.new
     # => #<Building:0x00007fb333c0cec8...>
 
@@ -247,7 +247,8 @@ class BuildingTest < Minitest::Test
 
     unit1.add_renter(renter2)
 
-    expected1 = {renter2 => {bathrooms: 1, bedrooms: 1}, renter1 => {bathrooms: 2, bedrooms: 2}}
+    expected1 = {renter2 => {bathrooms: 1, bedrooms: 1},
+                renter1 => {bathrooms: 2, bedrooms: 2}}
 
     assert_equal expected1, building.rooms_by_renter
 

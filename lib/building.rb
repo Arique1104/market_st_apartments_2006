@@ -64,6 +64,15 @@ class Building
     breakdown
   end
 
+  def rooms_by_renter
+    r_by_r = Hash.new{|h,k| h[k] = {}}
+    rented_units.each do |unit|
+      r_by_r[unit.renter][:bathrooms] = unit.bathrooms
+      r_by_r[unit.renter][:bedrooms] = unit.bedrooms
+    end
+    r_by_r
+  end
+
 
 
 end
