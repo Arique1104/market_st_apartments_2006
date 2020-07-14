@@ -10,7 +10,9 @@ class RenterTest < Minitest::Test
     assert_instance_of Renter, renter
   end
 
-  #def test_it_has_attributes
-  #end
+  def test_it_has_attributes
+    renter = Renter.new("Jessie")
+    assert_equal "Jessie", renter.name
+  end
 
 end
