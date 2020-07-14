@@ -48,6 +48,13 @@ class Building
     end.renter
   end
 
+  def units_by_number_of_bedrooms
+    @units.reduce(Hash.new {|h,k| h[k] = []}) do |bedrooms, unit|
+      bedrooms[unit.bedrooms] << unit.number
+      bedrooms
+    end
+  end
+
 
 
 end
