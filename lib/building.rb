@@ -1,7 +1,7 @@
 class Building
- #attr_reader
-  #def initialize(*arg)
-
-  #end
+ attr_reader  :units
+  def initialize
+    @units = []
+  end
 
 end
