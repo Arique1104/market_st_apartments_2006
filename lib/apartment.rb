@@ -1,7 +1,7 @@
 class Apartment
  #attr_reader
-  #def initialize(*arg)
+  def initialize(unit_specs_hash)
 
-  #end
+  end
 
 end
